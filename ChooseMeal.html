@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Stil für den oberen Teil */
+        .oberer-teil {
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        /* Stil für die Essenskarten */
+        .karte {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            width: 30%; /* Jede Karte nimmt 30% der Breite */
+            display: inline-block;
+            vertical-align: top;
+            box-sizing: border-box;
+        }
+
+        .karte img {
+            width: 100%;
+            height: 150px; /* Feste Höhe für alle Bilder */
+            object-fit: cover; /* Skaliert das Bild, um die gesamte Box zu füllen */
+        }
+
+        .karte-beschreibung {
+            padding: 15px;
+        }
+
+        /* Stil für den unteren Teil */
+        .unterer-teil {
+            background-color: #3498db;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+    <title>Ihre Website</title>
+</head>
+<body>
+
+    <!-- Oberer Teil: Essensgerichte -->
+    <div class="oberer-teil">
+        <!-- Karte 1 -->
+        <div class="karte">
+            <img src="https://i.pinimg.com/originals/80/8c/ce/808cce324f396472b7de6809dbb3aa51.jpg" alt="Gericht 1">
+            <div class="karte-beschreibung">
+                <h3>Gericht 1</h3>
+                <p>Beschreibung des Gerichts 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+
+        <!-- Karte 2 -->
+        <div class="karte">
+            <img src="https://media02.stockfood.com/largepreviews/MzQ4ODUzNDQ3/11253337-Wiener-Burger-Cheeseburger-mit-Pommes-Frittes.jpg" alt="Gericht 2">
+            <div class="karte-beschreibung">
+                <h3>Gericht 2</h3>
+                <p>Beschreibung des Gerichts 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+
+        <!-- Karte 3 -->
+        <div class="karte">
+            <img src="https://ais.kochbar.de/kbrezept/496697_808817/1200x1200/fisch-kabeljau-gebraten-rezept.jpg" alt="Gericht 3">
+            <div class="karte-beschreibung">
+                <h3>Gericht 3</h3>
+                <p>Beschreibung des Gerichts 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+        <div class="karte">
+            <img src="https://bing.com/th?id=OSK.115622f95cb6d436c98bcb8568d3cfc8" alt="Gericht 4">
+            <div class="karte-beschreibung">
+                <h3>Gericht 4</h3>
+                <p>Beschreibung des Gerichts 4 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+        <div class="karte">
+            <img src="https://bing.com/th?id=OSK.84e889719385066f049dadaea61fead6" alt="Gericht 5">
+            <div class="karte-beschreibung">
+                <h3>Gericht 5</h3>
+                <p>Beschreibung des Gerichts 5 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+        <div class="karte">
+            <img src="https://images.liebenswert-magazin.de/gulasch-rezept,id=16b12503,b=liebenswert,w=1600,ca=0.00,0.00,100.00,100.00,rm=sk.jpeg" alt="Gericht 6">
+            <div class="karte-beschreibung">
+                <h3>Gericht 6</h3>
+                <p>Beschreibung des Gerichts 6 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+        </div>
+        <!-- Weitere Karten hier -->
+    </div>
+
+    <!-- Unterer Teil: Touchzeichen -->
+    <div class="unterer-teil">
+        <p>Touchzeichen hier</p>
+    </div>
+
+</body>
+</html>
