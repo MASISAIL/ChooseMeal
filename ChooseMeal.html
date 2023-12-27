@@ -46,7 +46,23 @@
             text-align: center;
         }
     </style>
-    <title>Ihre Website</title>
+    <script>
+        // Function to create the second page dynamically
+        function openSecondPage() {
+            var touchElement = document.getElementById("touchElement");
+            touchElement.style.display = "none";
+
+            var obererTeil = document.querySelector(".oberer-teil");
+            var untererTeil = document.querySelector(".unterer-teil");
+
+            // Clonen und Anhängen der Karten im unteren Teil
+            obererTeil.querySelectorAll(".karte").forEach(function (karte) {
+                var clonedCard = karte.cloneNode(true);
+                untererTeil.appendChild(clonedCard);
+            });
+        }
+    </script>
+    <title>Choose Meal</title>
 </head>
 <body>
 
@@ -103,7 +119,7 @@
     </div>
 
     <!-- Unterer Teil: Touchzeichen -->
-    <div class="unterer-teil">
+    <div class="unterer-teil" id="touchElement" onclick=openSecondPage()>
         <p>Touchzeichen hier</p>
     </div>
 
