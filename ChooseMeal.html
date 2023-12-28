@@ -45,15 +45,116 @@
             color: #fff;
             text-align: center;
         }
+        .topBar {
+            display: none;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #85212143;
+            padding: 0;
+            height: 56px;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        .select-day{
+            margin: 10px;
+        }
+        .select-day .select-button {
+            display: flex;
+            height: 35px;
+            background: #fff;
+            padding: 5px;
+            font-size: 16px;
+            font-weight: 300;
+            border-radius: 8px;
+            align-items: center;
+            cursor:pointer; 
+            justify-content: space-between;
+            box-shadow: 0 0 5px rgba(0,0,0, 0.1);
+        }
+
+        .select-button i {
+            font-size: 25px;
+            transition: 0.3s;
+        }
+        .select-day .options {
+            position: relative;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            background: #fff;
+            box-shadow: 0 0 3px rgba(0,0,0, 0.1);
+            display: none;
+        }
+        .select-day.active .options {
+            display: block;
+        }
+        .select-day.active{
+            align-self: flex-start;
+        }
+        .options .option {
+            display: flex;
+            height: 35px;
+            cursor: pointer;
+            padding: 0 8px;
+            border-radius: 8px;
+            align-items: center;
+            background: #fff;
+        }
+        .options .option:hover {
+            background: #85212143;
+        }
+        .option i {
+            font-size: 25px;
+            margin-right: 12px;
+        }
+        .option .option-text {
+            font-size: 18px;
+            color: #333;
+        }
+        .selBtnText{
+            color: #333;
+        }
+        .downArrow {
+            color: #333;
+            font-size: x-large;
+        }
+        .topBar-rightSide {
+            display: flex;
+            flex-direction: row;
+        }
     </style>
     <script>
         // Function to create the second page dynamically
         function openSecondPage() {
             var touchElement = document.getElementById("touchElement");
-            touchElement.style.display = "none";
+            //touchElement.style.display = "none";
 
             var obererTeil = document.querySelector(".oberer-teil");
             var untererTeil = document.querySelector(".unterer-teil");
+            var topBar = document.querySelector(".topBar");
+            const dayMenu = document.querySelector(".select-day");
+            var selectButton = dayMenu.querySelector(".select-button");
+            var options = dayMenu.querySelectorAll(".option");
+            var selBtnText = dayMenu.querySelector(".selBtnText");
+
+            //top-Bar
+            topBar.style.display = 'flex';
+            //day-select menu logic
+            selectButton.addEventListener("click", () => dayMenu.classList.toggle("active"));
+            options.forEach(option => {
+                option.addEventListener("click", ()=>{
+                    let selectedOption = option.querySelector(".option-text").innerHTML;
+                    //console.log(selectedOption);
+                    selBtnText.innerText = selectedOption;
+                    //console.log(selBtnText.innerText);
+                    dayMenu.classList.remove("active");
+                });
+            });
+            //deactivate touch, can only be triggert once
+            document.getElementById('touchElement').onclick = null;
+
 
             // Clonen und Anhängen der Karten im unteren Teil
             obererTeil.querySelectorAll(".karte").forEach(function (karte) {
@@ -120,6 +221,55 @@
 
     <!-- Unterer Teil: Touchzeichen -->
     <div class="unterer-teil" id="touchElement" onclick=openSecondPage()>
+        <div id="page-top" class="topBar">
+            <h1>ChooseMeal</h1>
+            <div class="select-day">
+                <div class="select-button">
+                    <span class="selBtnText"> Wähle einen anderen Wochentag</span>
+                    <span class="downArrow">&#8595;</span>
+                </div>
+                <ul class="options">
+                    <li class="option">
+                        <span class="option-text">Montag</span>
+                    </li>
+                    <li class="option">
+                        <span class="option-text">Dienstag</span>
+                    </li>
+                    <li class="option">
+                        <span class="option-text">Mittwoch</span>
+                    </li>
+                    <li class="option">
+                        <span class="option-text">Donnerstag</span>
+                    </li>
+                    <li class="option">
+                        <span class="option-text">Freitag</span>
+                    </li>
+                    <li class="option">
+                        <span class="option-text">Samstag</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="topBar-rightSide">
+                <div class="select-day">
+                    <div class="select-button">
+                        <span class="selBtnText"> DE</span>
+                        <span class="flag-icon flag-icon-ad flag-icon-squared"></span>
+                        <span class="downArrow">&#8595;</span>
+                    </div>
+                    <ul class="options">
+                        <li class="option">
+                            <span class="option-text">Deutsch</span>
+                        </li>
+                        <li class="option">
+                            <span class="option-text">Englisch</span>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn-login">
+                    <p>login</p>
+                </button>
+            </div>
+        </div>
         <p>Touchzeichen hier</p>
     </div>
 
