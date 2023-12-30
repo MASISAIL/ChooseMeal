@@ -124,6 +124,11 @@
             display: flex;
             flex-direction: row;
         }
+        .nutrition-info {
+            width: 60%;
+            display: inline-block;
+            vertical-align: top;
+        }
     </style>
     <script>
         // Function to create the second page dynamically
@@ -152,16 +157,38 @@
                     dayMenu.classList.remove("active");
                 });
             });
-            //deactivate touch, can only be triggert once
+            // deactivate touch, can only be triggert once
             document.getElementById('touchElement').onclick = null;
 
 
             // Clonen und Anhängen der Karten im unteren Teil
             obererTeil.querySelectorAll(".karte").forEach(function (karte) {
                 var clonedCard = karte.cloneNode(true);
+                clonedCard.addEventListener("click", function () {
+                    showNutritionInfo();
+                });
                 untererTeil.appendChild(clonedCard);
             });
         }
+
+        function showNutritionInfo() {
+            // Get the nutrition info section
+            var nutritionInfo = document.querySelector(".nutrition-info");
+
+            // Display the nutrition info section
+            nutritionInfo.style.display = "block";
+            // Get the meal name and display its nutrition info
+            var mealName = clickedCard.querySelector("h3").innerText;
+            var mealInfo = document.querySelectorAll(".meal-info");
+
+            mealInfo.forEach(function (meal) {
+            if (meal.querySelector("h3").innerText === mealName) {
+                meal.style.display = "block";
+            } else {
+                meal.style.display = "none";
+            }
+        });
+    }
     </script>
     <title>Choose Meal</title>
 </head>
@@ -195,6 +222,8 @@
                 <p>Beschreibung des Gerichts 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
         </div>
+
+        <!-- Karte 4 -->
         <div class="karte">
             <img src="https://bing.com/th?id=OSK.115622f95cb6d436c98bcb8568d3cfc8" alt="Gericht 4">
             <div class="karte-beschreibung">
@@ -202,6 +231,8 @@
                 <p>Beschreibung des Gerichts 4 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
         </div>
+
+        <!-- Karte 5 -->
         <div class="karte">
             <img src="https://bing.com/th?id=OSK.84e889719385066f049dadaea61fead6" alt="Gericht 5">
             <div class="karte-beschreibung">
@@ -209,6 +240,8 @@
                 <p>Beschreibung des Gerichts 5 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
         </div>
+
+        <!-- Karte 6 -->
         <div class="karte">
             <img src="https://images.liebenswert-magazin.de/gulasch-rezept,id=16b12503,b=liebenswert,w=1600,ca=0.00,0.00,100.00,100.00,rm=sk.jpeg" alt="Gericht 6">
             <div class="karte-beschreibung">
@@ -217,6 +250,53 @@
             </div>
         </div>
         <!-- Weitere Karten hier -->
+
+        <!-- Nutrition information section -->
+        <div class="nutrition-info" style="display: none;">
+            <h2>Nutrition Information</h2>
+            <!-- Add nutritional information content here -->
+            <div class="meal-info" id="meal1">
+                <h3>Gericht 1</h3>
+                <ul>
+                    <li><strong>Calories:</strong> 300 kcal</li>
+                    <li><strong>Protein:</strong> 20g</li>
+                    <li><strong>Carbohydrates:</strong> 40g</li>
+                    <li><strong>Fat:</strong> 10g</li>
+                <!-- Add more nutritional information as needed -->
+                </ul>
+            </div>
+            <div class="meal-info" id="meal2" style="display: none;">
+                <h3>Gericht 2</h3>
+                <ul>
+                    <li><strong>Calories:</strong> 400 kcal</li>
+                    <li><strong>Protein:</strong> 25g</li>
+                    <li><strong>Carbohydrates:</strong> 35g</li>
+                    <li><strong>Fat:</strong> 15g</li>
+                    <!-- Add more nutritional information as needed -->
+                </ul>
+            </div>
+            <div class="meal-info" id="meal3">
+                <h3>Gericht 3</h3>
+                <ul>
+                    <li><strong>Calories:</strong> 400 kcal</li>
+                    <li><strong>Protein:</strong> 25g</li>
+                    <li><strong>Carbohydrates:</strong> 35g</li>
+                    <li><strong>Fat:</strong> 15g</li>
+                    <!-- Add more nutritional information as needed -->
+                </ul>
+            </div>
+            <div class="meal-info" id="meal4">
+                <h3>Gericht 4</h3>
+                <ul>
+                    <li><strong>Calories:</strong> 400 kcal</li>
+                    <li><strong>Protein:</strong> 25g</li>
+                    <li><strong>Carbohydrates:</strong> 35g</li>
+                    <li><strong>Fat:</strong> 15g</li>
+                    <!-- Add more nutritional information as needed -->
+                </ul>
+            </div>
+            <!-- Add more meal-info divs for other meals -->
+        </div>
     </div>
 
     <!-- Unterer Teil: Touchzeichen -->
