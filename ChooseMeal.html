@@ -34,8 +34,17 @@
             object-fit: cover; /* Skaliert das Bild, um die gesamte Box zu füllen */
         }
 
+        .karte img:hover {
+            border: 1px solid #4e0506;
+        }
+
         .karte-beschreibung {
             padding: 15px;
+            text-align: center;
+        }
+
+        .karte:hover .karte-beschreibung {
+            background-color: #4e0506;
         }
 
         /* Stil für den unteren Teil */
@@ -136,8 +145,8 @@
             var touchElement = document.getElementById("touchElement");
             //touchElement.style.display = "none";
 
-            var obererTeil = document.querySelector(".oberer-teil");
-            var untererTeil = document.querySelector(".unterer-teil");
+            const obererTeil = document.querySelector(".oberer-teil");
+            const untererTeil = document.querySelector(".unterer-teil");
             var topBar = document.querySelector(".topBar");
             const dayMenu = document.querySelector(".select-day");
             var selectButton = dayMenu.querySelector(".select-button");
@@ -163,32 +172,31 @@
 
             // Clonen und Anhängen der Karten im unteren Teil
             obererTeil.querySelectorAll(".karte").forEach(function (karte) {
-                var clonedCard = karte.cloneNode(true);
-                clonedCard.addEventListener("click", function () {
-                    showNutritionInfo();
+                const clonedCard = karte.cloneNode(true);
+                clonedCard.addEventListener("click", function (event) {
+                    showNutritionInfo(event.target.closest(".karte")); // Pass the clicked card to the function
                 });
                 untererTeil.appendChild(clonedCard);
             });
         }
 
-        function showNutritionInfo() {
+        function showNutritionInfo(clickedCard) {
             // Get the nutrition info section
-            var nutritionInfo = document.querySelector(".nutrition-info");
-
+            const nutritionInfo = document.querySelector(".nutrition-info");
             // Display the nutrition info section
             nutritionInfo.style.display = "block";
-            // Get the meal name and display its nutrition info
-            var mealName = clickedCard.querySelector("h3").innerText;
-            var mealInfo = document.querySelectorAll(".meal-info");
-
+            // Get the meal ID from the clicked card
+            const mealId = clickedCard.getAttribute("data-meal-id");
+            // Get all the meal info elements
+            const mealInfo = document.querySelectorAll(".meal-info");
+            // Hide all meal info elements
             mealInfo.forEach(function (meal) {
-            if (meal.querySelector("h3").innerText === mealName) {
-                meal.style.display = "block";
-            } else {
                 meal.style.display = "none";
-            }
-        });
-    }
+            });
+            // Show the nutrition info for the clicked meal
+            const selectedMealInfo = document.getElementById(mealId);
+            selectedMealInfo.style.display = "block";
+        }
     </script>
     <title>Choose Meal</title>
 </head>
@@ -197,8 +205,9 @@
     <!-- Oberer Teil: Essensgerichte -->
     <div class="oberer-teil">
         <!-- Karte 1 -->
-        <div class="karte">
-            <img src="https://i.pinimg.com/originals/80/8c/ce/808cce324f396472b7de6809dbb3aa51.jpg" alt="Gericht 1">
+        <div class="karte" data-meal-id="meal1">
+            <a target="_blank" href="https://i.pinimg.com/originals/80/8c/ce/808cce324f396472b7de6809dbb3aa51.jpg">
+            <img src="https://i.pinimg.com/originals/80/8c/ce/808cce324f396472b7de6809dbb3aa51.jpg" alt="Gericht 1"> </a>
             <div class="karte-beschreibung">
                 <h3>Gericht 1</h3>
                 <p>Beschreibung des Gerichts 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -206,7 +215,7 @@
         </div>
 
         <!-- Karte 2 -->
-        <div class="karte">
+        <div class="karte" data-meal-id="meal2">
             <img src="https://media02.stockfood.com/largepreviews/MzQ4ODUzNDQ3/11253337-Wiener-Burger-Cheeseburger-mit-Pommes-Frittes.jpg" alt="Gericht 2">
             <div class="karte-beschreibung">
                 <h3>Gericht 2</h3>
@@ -215,7 +224,7 @@
         </div>
 
         <!-- Karte 3 -->
-        <div class="karte">
+        <div class="karte" data-meal-id="meal3">
             <img src="https://ais.kochbar.de/kbrezept/496697_808817/1200x1200/fisch-kabeljau-gebraten-rezept.jpg" alt="Gericht 3">
             <div class="karte-beschreibung">
                 <h3>Gericht 3</h3>
@@ -224,7 +233,7 @@
         </div>
 
         <!-- Karte 4 -->
-        <div class="karte">
+        <div class="karte" data-meal-id="meal4">
             <img src="https://bing.com/th?id=OSK.115622f95cb6d436c98bcb8568d3cfc8" alt="Gericht 4">
             <div class="karte-beschreibung">
                 <h3>Gericht 4</h3>
@@ -233,7 +242,7 @@
         </div>
 
         <!-- Karte 5 -->
-        <div class="karte">
+        <div class="karte" data-meal-id="meal5">
             <img src="https://bing.com/th?id=OSK.84e889719385066f049dadaea61fead6" alt="Gericht 5">
             <div class="karte-beschreibung">
                 <h3>Gericht 5</h3>
@@ -242,7 +251,7 @@
         </div>
 
         <!-- Karte 6 -->
-        <div class="karte">
+        <div class="karte" data-meal-id="meal6">
             <img src="https://images.liebenswert-magazin.de/gulasch-rezept,id=16b12503,b=liebenswert,w=1600,ca=0.00,0.00,100.00,100.00,rm=sk.jpeg" alt="Gericht 6">
             <div class="karte-beschreibung">
                 <h3>Gericht 6</h3>
@@ -255,41 +264,61 @@
         <div class="nutrition-info" style="display: none;">
             <h2>Nutrition Information</h2>
             <!-- Add nutritional information content here -->
-            <div class="meal-info" id="meal1">
+            <div class="meal-info" id="meal1" style="display: none;">
                 <h3>Gericht 1</h3>
                 <ul>
-                    <li><strong>Calories:</strong> 300 kcal</li>
-                    <li><strong>Protein:</strong> 20g</li>
-                    <li><strong>Carbohydrates:</strong> 40g</li>
-                    <li><strong>Fat:</strong> 10g</li>
+                    <li><strong>Calories:</strong> 400 kcal</li>
+                    <li><strong>Protein:</strong> 30g</li>
+                    <li><strong>Carbohydrates:</strong> 35g</li>
+                    <li><strong>Fat:</strong> 20g</li>
                 <!-- Add more nutritional information as needed -->
                 </ul>
             </div>
             <div class="meal-info" id="meal2" style="display: none;">
                 <h3>Gericht 2</h3>
                 <ul>
-                    <li><strong>Calories:</strong> 400 kcal</li>
-                    <li><strong>Protein:</strong> 25g</li>
+                    <li><strong>Calories:</strong> 200 kcal</li>
+                    <li><strong>Protein:</strong> 20g</li>
                     <li><strong>Carbohydrates:</strong> 35g</li>
-                    <li><strong>Fat:</strong> 15g</li>
+                    <li><strong>Fat:</strong> 13g</li>
                     <!-- Add more nutritional information as needed -->
                 </ul>
             </div>
-            <div class="meal-info" id="meal3">
+            <div class="meal-info" id="meal3" style="display: none;">
                 <h3>Gericht 3</h3>
                 <ul>
-                    <li><strong>Calories:</strong> 400 kcal</li>
-                    <li><strong>Protein:</strong> 25g</li>
+                    <li><strong>Calories:</strong> 100 kcal</li>
+                    <li><strong>Protein:</strong> 15g</li>
                     <li><strong>Carbohydrates:</strong> 35g</li>
-                    <li><strong>Fat:</strong> 15g</li>
+                    <li><strong>Fat:</strong> 10g</li>
                     <!-- Add more nutritional information as needed -->
                 </ul>
             </div>
-            <div class="meal-info" id="meal4">
+            <div class="meal-info" id="meal4" style="display: none;">
                 <h3>Gericht 4</h3>
                 <ul>
-                    <li><strong>Calories:</strong> 400 kcal</li>
+                    <li><strong>Calories:</strong> 300 kcal</li>
                     <li><strong>Protein:</strong> 25g</li>
+                    <li><strong>Carbohydrates:</strong> 35g</li>
+                    <li><strong>Fat:</strong> 18g</li>
+                    <!-- Add more nutritional information as needed -->
+                </ul>
+            </div>
+            <div class="meal-info" id="meal5" style="display: none;">
+                <h3>Gericht 5</h3>
+                <ul>
+                    <li><strong>Calories:</strong> 200 kcal</li>
+                    <li><strong>Protein:</strong> 20g</li>
+                    <li><strong>Carbohydrates:</strong> 35g</li>
+                    <li><strong>Fat:</strong> 19g</li>
+                    <!-- Add more nutritional information as needed -->
+                </ul>
+            </div>
+            <div class="meal-info" id="meal6" style="display: none;">
+                <h3>Gericht 6</h3>
+                <ul>
+                    <li><strong>Calories:</strong> 300 kcal</li>
+                    <li><strong>Protein:</strong> 19g</li>
                     <li><strong>Carbohydrates:</strong> 35g</li>
                     <li><strong>Fat:</strong> 15g</li>
                     <!-- Add more nutritional information as needed -->
