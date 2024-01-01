@@ -32,10 +32,12 @@
             width: 100%;
             height: 150px; /* Feste Höhe für alle Bilder */
             object-fit: cover; /* Skaliert das Bild, um die gesamte Box zu füllen */
+            transform: scale(1);
         }
 
         .karte img:hover {
             border: 1px solid #4e0506;
+            transform: scale(0.96);
         }
 
         .karte-beschreibung {
@@ -183,19 +185,33 @@
         function showNutritionInfo(clickedCard) {
             // Get the nutrition info section
             const nutritionInfo = document.querySelector(".nutrition-info");
-            // Display the nutrition info section
-            nutritionInfo.style.display = "block";
-            // Get the meal ID from the clicked card
-            const mealId = clickedCard.getAttribute("data-meal-id");
+            const mealImages = document.querySelectorAll(".karte img");
             // Get all the meal info elements
             const mealInfo = document.querySelectorAll(".meal-info");
-            // Hide all meal info elements
-            mealInfo.forEach(function (meal) {
-                meal.style.display = "none";
+
+            // Hide all meal images except the clicked one
+            mealImages.forEach(function (mealImage) {
+                if (mealImage.closest(".karte") !== clickedCard) {
+                    mealImage.closest(".karte").style.display = "none";
+                }
             });
+        
+            // Display the nutrition info section
+            nutritionInfo.style.display = "inline-block";
+        
+            // Get the meal ID from the clicked card
+            const mealId = clickedCard.getAttribute("data-meal-id");
+        
             // Show the nutrition info for the clicked meal
-            const selectedMealInfo = document.getElementById(mealId);
-            selectedMealInfo.style.display = "block";
+            mealInfo.forEach(function (meal) {
+                if (meal.getAttribute("id") === mealId) {
+                    meal.style.display = "block";
+                    nutritionInfo.innerHTML = "";
+                    nutritionInfo.appendChild(meal.cloneNode(true));
+                } else {
+                    meal.style.display = "none";
+                }
+            });
         }
     </script>
     <title>Choose Meal</title>
@@ -206,8 +222,7 @@
     <div class="oberer-teil">
         <!-- Karte 1 -->
         <div class="karte" data-meal-id="meal1">
-            <a target="_blank" href="https://i.pinimg.com/originals/80/8c/ce/808cce324f396472b7de6809dbb3aa51.jpg">
-            <img src="https://i.pinimg.com/originals/80/8c/ce/808cce324f396472b7de6809dbb3aa51.jpg" alt="Gericht 1"> </a>
+            <img src="https://i.pinimg.com/originals/80/8c/ce/808cce324f396472b7de6809dbb3aa51.jpg" alt="Gericht 1"> 
             <div class="karte-beschreibung">
                 <h3>Gericht 1</h3>
                 <p>Beschreibung des Gerichts 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -261,7 +276,7 @@
         <!-- Weitere Karten hier -->
 
         <!-- Nutrition information section -->
-        <div class="nutrition-info" style="display: none;">
+        <div class="nutrition-info" style="width: 40%; display: none;">
             <h2>Nutrition Information</h2>
             <!-- Add nutritional information content here -->
             <div class="meal-info" id="meal1" style="display: none;">
@@ -381,6 +396,5 @@
         </div>
         <p>Touchzeichen hier</p>
     </div>
-
 </body>
 </html>
