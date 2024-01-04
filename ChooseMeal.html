@@ -70,6 +70,7 @@
         }
         .select-day{
             margin: 10px;
+            z-index: 1;
         }
         .select-day .select-button {
             display: flex;
@@ -141,6 +142,33 @@
             display: inline-block;
             vertical-align: top;
         }
+        .login-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        .login-form input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .login-form button {
+            padding: 10px;
+            background: #3498db;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
     </style>
     <script>
         // Function to create the second page dynamically
@@ -211,6 +239,18 @@
                 }
             });
         }
+        function showLoginForm() {
+            var loginForm = document.getElementById("loginForm");
+            loginForm.style.display = "block";
+        }
+
+        function submitLoginForm() {
+            var pin = document.getElementById("pin").value;
+
+            // Nach der Verarbeitung kannst du das Formular ausblenden.
+            var loginForm = document.getElementById("loginForm");
+            loginForm.style.display = "none";
+        }
     </script>
     <title>Choose Meal</title>
 </head>
@@ -219,11 +259,12 @@
     <!-- Oberer Teil: Essensgerichte -->
     <div class="oberer-teil">
         <!-- Karte 1 -->
+        <h1>ChooseMeal</h1>
         <div class="karte" data-meal-id="meal1">
             <img src="https://i.pinimg.com/originals/80/8c/ce/808cce324f396472b7de6809dbb3aa51.jpg" alt="Gericht 1"> 
             <div class="karte-beschreibung">
-                <h3>Gericht 1</h3>
-                <p>Beschreibung des Gerichts 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3>Schnitzel mit Pommes</h3>
+                <p>3,49 A</p>
                 <div class="meal-info" id="meal1" style="display: none;">
                     <!-- Display the nutrition info section --> 
                     <ul>
@@ -241,8 +282,8 @@
         <div class="karte" data-meal-id="meal2">
             <img src="https://media02.stockfood.com/largepreviews/MzQ4ODUzNDQ3/11253337-Wiener-Burger-Cheeseburger-mit-Pommes-Frittes.jpg" alt="Gericht 2">
             <div class="karte-beschreibung">
-                <h3>Gericht 2</h3>
-                <p>Beschreibung des Gerichts 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3>Burger mit Pommes</h3>
+                <p>4,49€ B</p>
                 <div class="meal-info" id="meal2" style="display: none;">
                     <ul>
                         <li><strong>Calories:</strong> 200 kcal</li>
@@ -259,8 +300,8 @@
         <div class="karte" data-meal-id="meal3">
             <img src="https://ais.kochbar.de/kbrezept/496697_808817/1200x1200/fisch-kabeljau-gebraten-rezept.jpg" alt="Gericht 3">
             <div class="karte-beschreibung">
-                <h3>Gericht 3</h3>
-                <p>Beschreibung des Gerichts 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3>Fisch mit Pommes</h3>
+                <p>4,99€ C</p>
                 <div class="meal-info" id="meal3" style="display: none;">
                     <ul>
                         <li><strong>Calories:</strong> 100 kcal</li>
@@ -277,8 +318,8 @@
         <div class="karte" data-meal-id="meal4">
             <img src="https://bing.com/th?id=OSK.115622f95cb6d436c98bcb8568d3cfc8" alt="Gericht 4">
             <div class="karte-beschreibung">
-                <h3>Gericht 4</h3>
-                <p>Beschreibung des Gerichts 4 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3>Veganes Curry mit Reis</h3>
+                <p>2,99€ D</p>
                 <div class="meal-info" id="meal4" style="display: none;">
                     <ul>
                         <li><strong>Calories:</strong> 300 kcal</li>
@@ -295,8 +336,8 @@
         <div class="karte" data-meal-id="meal5">
             <img src="https://bing.com/th?id=OSK.84e889719385066f049dadaea61fead6" alt="Gericht 5">
             <div class="karte-beschreibung">
-                <h3>Gericht 5</h3>
-                <p>Beschreibung des Gerichts 5 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3>Spagetthi Bolognese</h3>
+                <p>2,99€ A</p>
                 <div class="meal-info" id="meal5" style="display: none;">
                     <ul>
                         <li><strong>Calories:</strong> 200 kcal</li>
@@ -313,8 +354,8 @@
         <div class="karte" data-meal-id="meal6">
             <img src="https://images.liebenswert-magazin.de/gulasch-rezept,id=16b12503,b=liebenswert,w=1600,ca=0.00,0.00,100.00,100.00,rm=sk.jpeg" alt="Gericht 6">
             <div class="karte-beschreibung">
-                <h3>Gericht 6</h3>
-                <p>Beschreibung des Gerichts 6 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <h3>Gulasch mit Kartoffeln</h3>
+                <p>5,49€ C</p>
                 <div class="meal-info" id="meal6" style="display: none;">
                     <ul>
                         <li><strong>Calories:</strong> 300 kcal</li>
@@ -326,8 +367,6 @@
                 </div>
             </div>
         </div>
-        <!-- Weitere Karten hier -->
-
         <!-- Nutrition information section -->
         <div class="nutrition-info" style="width: 40%; display: none;"></div>
     </div>
@@ -378,12 +417,16 @@
                         </li>
                     </ul>
                 </div>
-                <button class="btn-login">
-                    <p>login</p>
-                </button>
+                <button class="btn-login" onclick="showLoginForm()">login</button>                
             </div>
         </div>
         <p>Touchzeichen hier</p>
+    </div>
+    <div class="login-form" id="loginForm">
+        <label for="pin">Matrikelnummer:</label>
+        <input type="number" id="pin" name="pin" required>
+
+        <button onclick="submitLoginForm()">Einloggen</button>
     </div>
 </body>
 </html>
