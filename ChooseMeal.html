@@ -126,6 +126,7 @@
         }
         .selBtnText{
             color: #333;
+            
         }
         .downArrow {
             color: #333;
@@ -196,9 +197,6 @@
                 }
             });
         
-            // Display the nutrition info section
-            nutritionInfo.style.display = "inline-block";
-        
             // Get the meal ID from the clicked card
             const mealId = clickedCard.getAttribute("data-meal-id");
         
@@ -226,6 +224,16 @@
             <div class="karte-beschreibung">
                 <h3>Gericht 1</h3>
                 <p>Beschreibung des Gerichts 1 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="meal-info" id="meal1" style="display: none;">
+                    <!-- Display the nutrition info section --> 
+                    <ul>
+                        <li><strong>Calories:</strong> 400 kcal</li>
+                        <li><strong>Protein:</strong> 30g</li>
+                        <li><strong>Carbohydrates:</strong> 35g</li>
+                        <li><strong>Fat:</strong> 20g</li>
+                    <!-- Add more nutritional information as needed -->
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -235,6 +243,15 @@
             <div class="karte-beschreibung">
                 <h3>Gericht 2</h3>
                 <p>Beschreibung des Gerichts 2 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="meal-info" id="meal2" style="display: none;">
+                    <ul>
+                        <li><strong>Calories:</strong> 200 kcal</li>
+                        <li><strong>Protein:</strong> 20g</li>
+                        <li><strong>Carbohydrates:</strong> 35g</li>
+                        <li><strong>Fat:</strong> 13g</li>
+                        <!-- Add more nutritional information as needed -->
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -244,6 +261,15 @@
             <div class="karte-beschreibung">
                 <h3>Gericht 3</h3>
                 <p>Beschreibung des Gerichts 3 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="meal-info" id="meal3" style="display: none;">
+                    <ul>
+                        <li><strong>Calories:</strong> 100 kcal</li>
+                        <li><strong>Protein:</strong> 15g</li>
+                        <li><strong>Carbohydrates:</strong> 35g</li>
+                        <li><strong>Fat:</strong> 10g</li>
+                        <!-- Add more nutritional information as needed -->
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -253,6 +279,15 @@
             <div class="karte-beschreibung">
                 <h3>Gericht 4</h3>
                 <p>Beschreibung des Gerichts 4 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="meal-info" id="meal4" style="display: none;">
+                    <ul>
+                        <li><strong>Calories:</strong> 300 kcal</li>
+                        <li><strong>Protein:</strong> 25g</li>
+                        <li><strong>Carbohydrates:</strong> 35g</li>
+                        <li><strong>Fat:</strong> 18g</li>
+                        <!-- Add more nutritional information as needed -->
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -262,6 +297,15 @@
             <div class="karte-beschreibung">
                 <h3>Gericht 5</h3>
                 <p>Beschreibung des Gerichts 5 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="meal-info" id="meal5" style="display: none;">
+                    <ul>
+                        <li><strong>Calories:</strong> 200 kcal</li>
+                        <li><strong>Protein:</strong> 20g</li>
+                        <li><strong>Carbohydrates:</strong> 35g</li>
+                        <li><strong>Fat:</strong> 19g</li>
+                        <!-- Add more nutritional information as needed -->
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -271,76 +315,21 @@
             <div class="karte-beschreibung">
                 <h3>Gericht 6</h3>
                 <p>Beschreibung des Gerichts 6 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <div class="meal-info" id="meal6" style="display: none;">
+                    <ul>
+                        <li><strong>Calories:</strong> 300 kcal</li>
+                        <li><strong>Protein:</strong> 19g</li>
+                        <li><strong>Carbohydrates:</strong> 35g</li>
+                        <li><strong>Fat:</strong> 15g</li>
+                        <!-- Add more nutritional information as needed -->
+                    </ul>
+                </div>
             </div>
         </div>
         <!-- Weitere Karten hier -->
 
         <!-- Nutrition information section -->
-        <div class="nutrition-info" style="width: 40%; display: none;">
-            <h2>Nutrition Information</h2>
-            <!-- Add nutritional information content here -->
-            <div class="meal-info" id="meal1" style="display: none;">
-                <h3>Gericht 1</h3>
-                <ul>
-                    <li><strong>Calories:</strong> 400 kcal</li>
-                    <li><strong>Protein:</strong> 30g</li>
-                    <li><strong>Carbohydrates:</strong> 35g</li>
-                    <li><strong>Fat:</strong> 20g</li>
-                <!-- Add more nutritional information as needed -->
-                </ul>
-            </div>
-            <div class="meal-info" id="meal2" style="display: none;">
-                <h3>Gericht 2</h3>
-                <ul>
-                    <li><strong>Calories:</strong> 200 kcal</li>
-                    <li><strong>Protein:</strong> 20g</li>
-                    <li><strong>Carbohydrates:</strong> 35g</li>
-                    <li><strong>Fat:</strong> 13g</li>
-                    <!-- Add more nutritional information as needed -->
-                </ul>
-            </div>
-            <div class="meal-info" id="meal3" style="display: none;">
-                <h3>Gericht 3</h3>
-                <ul>
-                    <li><strong>Calories:</strong> 100 kcal</li>
-                    <li><strong>Protein:</strong> 15g</li>
-                    <li><strong>Carbohydrates:</strong> 35g</li>
-                    <li><strong>Fat:</strong> 10g</li>
-                    <!-- Add more nutritional information as needed -->
-                </ul>
-            </div>
-            <div class="meal-info" id="meal4" style="display: none;">
-                <h3>Gericht 4</h3>
-                <ul>
-                    <li><strong>Calories:</strong> 300 kcal</li>
-                    <li><strong>Protein:</strong> 25g</li>
-                    <li><strong>Carbohydrates:</strong> 35g</li>
-                    <li><strong>Fat:</strong> 18g</li>
-                    <!-- Add more nutritional information as needed -->
-                </ul>
-            </div>
-            <div class="meal-info" id="meal5" style="display: none;">
-                <h3>Gericht 5</h3>
-                <ul>
-                    <li><strong>Calories:</strong> 200 kcal</li>
-                    <li><strong>Protein:</strong> 20g</li>
-                    <li><strong>Carbohydrates:</strong> 35g</li>
-                    <li><strong>Fat:</strong> 19g</li>
-                    <!-- Add more nutritional information as needed -->
-                </ul>
-            </div>
-            <div class="meal-info" id="meal6" style="display: none;">
-                <h3>Gericht 6</h3>
-                <ul>
-                    <li><strong>Calories:</strong> 300 kcal</li>
-                    <li><strong>Protein:</strong> 19g</li>
-                    <li><strong>Carbohydrates:</strong> 35g</li>
-                    <li><strong>Fat:</strong> 15g</li>
-                    <!-- Add more nutritional information as needed -->
-                </ul>
-            </div>
-            <!-- Add more meal-info divs for other meals -->
-        </div>
+        <div class="nutrition-info" style="width: 40%; display: none;"></div>
     </div>
 
     <!-- Unterer Teil: Touchzeichen -->
