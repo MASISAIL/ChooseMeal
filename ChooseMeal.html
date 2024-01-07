@@ -62,6 +62,7 @@
             align-items: center;
             justify-content: space-between;
             background-color: #85212143;
+            margin-bottom: 10px;
             padding: 0;
             height: 56px;
             top: 0;
@@ -169,6 +170,17 @@
             border: none;
             cursor: pointer;
         }
+        
+        .touchIcon {
+        background: url('touch-icon.png');
+        background-size: 100%;
+        height: 128px;
+        width: 89px;
+        display: block;
+        margin-left: 50%;
+        margin-right: 50%;
+        }
+
     </style>
     <script>
         // Function to create the second page dynamically
@@ -184,6 +196,7 @@
             var options = dayMenu.querySelectorAll(".option");
             var selBtnText = dayMenu.querySelector(".selBtnText");
 
+            var touchIcon = document.querySelector(".touchIcon");
             //top-Bar
             topBar.style.display = 'flex';
             //day-select menu logic
@@ -199,6 +212,7 @@
             });
             // deactivate touch, can only be triggert once
             document.getElementById('touchElement').onclick = null;
+            touchIcon.style.display = "none";
 
 
             // Clonen und Anhängen der Karten im unteren Teil
@@ -390,6 +404,7 @@
 
     <!-- Unterer Teil: Touchzeichen -->
     <div class="unterer-teil" id="touchElement" onclick=openSecondPage()>
+        <span class='touchIcon'></span>
         <div id="page-top" class="topBar">
             <h1>ChooseMeal</h1>
             <span style='font-size:35px; border: 5px solid #ffffff;
@@ -439,7 +454,6 @@
                 <button class="btn-login" onclick="showLoginForm()">login</button>                
             </div>
         </div>
-        <p>Touchzeichen hier</p>
     </div>
     <div class="login-form" id="loginForm">
         <label for="pin">Matrikelnummer:</label>
