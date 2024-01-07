@@ -251,6 +251,23 @@
             var loginForm = document.getElementById("loginForm");
             loginForm.style.display = "none";
         }
+
+        function goBack() {
+            const obererTeil = document.querySelector(".oberer-teil");
+            const untererTeil = document.querySelector(".unterer-teil");
+            //remove card with info displayed
+            untererTeil.querySelectorAll(".karte").forEach(function (karte) {
+                karte.style.display = "none";
+            });
+            // Clonen und Anhängen der Karten im unteren Teil
+            obererTeil.querySelectorAll(".karte").forEach(function (karte) {
+                const clonedCard = karte.cloneNode(true);
+                clonedCard.addEventListener("click", function (event) {
+                    showNutritionInfo(event.target.closest(".karte")); // Pass the clicked card to the function
+                });
+                untererTeil.appendChild(clonedCard);
+            });
+        }
     </script>
     <title>Choose Meal</title>
 </head>
@@ -375,6 +392,8 @@
     <div class="unterer-teil" id="touchElement" onclick=openSecondPage()>
         <div id="page-top" class="topBar">
             <h1>ChooseMeal</h1>
+            <span style='font-size:35px; border: 5px solid #ffffff;
+                    border-radius: 4px; padding-bottom: 1%; cursor: pointer;' onclick="goBack()">&#8592;</span>
             <div class="select-day">
                 <div class="select-button">
                     <span class="selBtnText"> Wähle einen anderen Wochentag</span>
