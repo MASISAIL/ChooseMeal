@@ -214,30 +214,30 @@
         function showNutritionInfo(clickedCard) {
             // Get the nutrition info section
             const nutritionInfo = document.querySelector(".nutrition-info");
-            const mealImages = document.querySelectorAll(".karte img");
+            const mealImages = document.querySelectorAll(".karte");
             // Get all the meal info elements
             const mealInfo = document.querySelectorAll(".meal-info");
 
             // Hide all meal images except the clicked one
-            mealImages.forEach(function (mealImage) {
-                if (mealImage.closest(".karte") !== clickedCard) {
-                    mealImage.closest(".karte").style.display = "none";
+            for ( x = 6; x <= mealImages.length-1; x++ ) {
+                if (mealImages.item(x) !== clickedCard) {
+                    console.log(x);
+                    mealImages.item(x).style.display = "none";
                 }
-            });
-        
+            }        
             // Get the meal ID from the clicked card
             const mealId = clickedCard.getAttribute("data-meal-id");
         
             // Show the nutrition info for the clicked meal
-            mealInfo.forEach(function (meal) {
-                if (meal.getAttribute("id") === mealId) {
-                    meal.style.display = "block";
+            for ( x = 6; x <= mealInfo.length-1; x++ ) {
+                if (mealInfo.item(x).getAttribute("id") === mealId) {
+                    mealInfo.item(x).style.display = "block";
                     nutritionInfo.innerHTML = "";
-                    nutritionInfo.appendChild(meal.cloneNode(true));
+                    nutritionInfo.appendChild(mealInfo.item(x).cloneNode(true));
                 } else {
-                    meal.style.display = "none";
+                    mealInfo.item(x).style.display = "none";
                 }
-            });
+            }
         }
         function showLoginForm() {
             var loginForm = document.getElementById("loginForm");
