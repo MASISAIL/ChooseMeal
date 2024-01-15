@@ -12,8 +12,9 @@
 
         /* Stil für den oberen Teil */
         .oberer-teil {
-            background-color: #f0f0f0;
+            background-color: blanchedalmond;
             padding: 20px;
+            text-align: center;
         }
 
         /* Stil für die Essenskarten */
@@ -26,6 +27,7 @@
             display: inline-block;
             vertical-align: top;
             box-sizing: border-box;
+            border-color: black;
         }
 
         .karte img {
@@ -33,6 +35,7 @@
             height: 150px; /* Feste Höhe für alle Bilder */
             object-fit: cover; /* Skaliert das Bild, um die gesamte Box zu füllen */
             transform: scale(1);
+            border-radius:3px;
         }
 
         .karte img:hover {
@@ -56,6 +59,24 @@
             color: #fff;
             text-align: center;
         }
+
+        .unterer-teil .karte {
+            cursor: pointer;
+        }
+
+        .unterer-teil .karte img {
+            cursor: pointer;
+        }
+
+        .unterer-teil .karte img:hover {
+            border: 1px solid #4e0506;
+            transform: scale(0.96);
+        }
+
+        .unterer-teil .karte:hover .karte-beschreibung {
+            background-color: #4e0506;
+        }
+        
         .topBar {
             display: none;
             flex-direction: row;
@@ -171,16 +192,63 @@
             cursor: pointer;
         }
         
-        .touchIcon {
-        background: url('touch-icon.png');
-        background-size: 100%;
-        height: 128px;
-        width: 89px;
-        display: block;
-        margin-left: 50%;
-        margin-right: 50%;
+        /* Tooltip container */
+        .tooltip {
+            position: relative;
+            display: inline-block;
         }
 
+        /* Tooltip text */
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 120px;
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 92%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        /* Show the tooltip text on hover */
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Your existing touch icon styling */
+        .touchIcon {
+            background: url('touch-icon.png');
+            background-size: 100%;
+            height: 128px;
+            width: 89px;
+            display: block;
+            margin-left: 50%;
+            margin-right: 50%;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .backIcon {
+            font-size:25px; 
+            border: 9px solid #ffffff; 
+            justify-content: space-between; 
+            Margin-top:8px; 
+            margin-bottom: 5px; 
+            max-width:100px;
+            border-radius: 8px;
+            padding-bottom: 0.5%; 
+            cursor: pointer; 
+            background-color: white;
+            color:#333;
+            text-align:center;
+        }
     </style>
     <script>
         // Function to create the second page dynamically
@@ -404,11 +472,16 @@
 
     <!-- Unterer Teil: Touchzeichen -->
     <div class="unterer-teil" id="touchElement" onclick=openSecondPage()>
-        <span class='touchIcon'></span>
+        <div class="tooltip">
+            <span class="touchIcon"></span>
+            <span class="tooltip-text">Klicken</span>
+        </div>
         <div id="page-top" class="topBar">
             <h1>ChooseMeal</h1>
-            <span style='font-size:35px; border: 5px solid #ffffff;
-                    border-radius: 4px; padding-bottom: 1%; cursor: pointer;' onclick="goBack()">&#8592;</span>
+            <div class="tooltip">
+                <span class= "backIcon" onclick="goBack()">&#8592;</span>
+                <span class="tooltip-text">Klicken, um zurückzugehen.</span>
+             </div>
             <div class="select-day">
                 <div class="select-button">
                     <span class="selBtnText"> Wähle einen anderen Wochentag</span>
