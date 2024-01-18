@@ -12,14 +12,23 @@
 
         /* Stil für den oberen Teil */
         .oberer-teil {
-            background-color: blanchedalmond;
+            background-color: #ffffff;
             padding: 20px;
             text-align: center;
         }
 
+        header {
+        background-color: #3388c1;
+        padding: 0.2px 0.2px 0.2px 0.2px;
+        text-align: center;
+        font-size: 15px;
+        color: #ffffff;
+        }
+
         /* Stil für die Essenskarten */
         .karte {
-            border: 1px solid #ccc;
+            border: 0.1px solid #ccc;
+            background-color: #e7ebf1;
             border-radius: 8px;
             overflow: hidden;
             margin-bottom: 20px;
@@ -27,7 +36,8 @@
             display: inline-block;
             vertical-align: top;
             box-sizing: border-box;
-            border-color: black;
+            border-color: #3388c1;
+            color: #28497C;
         }
 
         .karte img {
@@ -48,20 +58,18 @@
             text-align: center;
         }
 
-        .karte:hover .karte-beschreibung {
-            background-color: #f33b41;
-        }
-
         /* Stil für den unteren Teil */
         .unterer-teil {
-            background-color: #3498db;
+            background-color: #3388c1;
             padding: 20px;
-            color: #fff;
+            color: #ffffff;
             text-align: center;
         }
 
         .unterer-teil .karte {
             cursor: pointer;
+            width: 30%;
+            margin-left: 0.2%;
         }
 
         .unterer-teil .karte img {
@@ -73,8 +81,8 @@
             transform: scale(0.96);
         }
 
-        .unterer-teil .karte:hover .karte-beschreibung {
-            background-color: #f33b41;
+        h3:hover {
+            color: #f33b41;
         }
         
         .topBar {
@@ -97,7 +105,7 @@
         .select-day .select-button {
             display: flex;
             height: 35px;
-            background: #fff;
+            background: #ffffff;
             padding: 5px;
             font-size: 16px;
             font-weight: 300;
@@ -117,7 +125,7 @@
             padding: 10px;
             margin-top: 5px;
             border-radius: 5px;
-            background: #fff;
+            background: #ffffff;
             box-shadow: 0 0 3px rgba(0,0,0, 0.1);
             display: none;
         }
@@ -134,7 +142,7 @@
             padding: 0 8px;
             border-radius: 8px;
             align-items: center;
-            background: #fff;
+            background: #ffffff;
         }
         .options .option:hover {
             background: #85212143;
@@ -171,7 +179,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             padding: 20px;
-            background: #fff;
+            background: #ffffff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             z-index: 2;
         }
@@ -186,8 +194,8 @@
 
         .login-form button {
             padding: 10px;
-            background: #3498db;
-            color: #fff;
+            background: #3388c1;
+            color: #ffffff;
             border: none;
             cursor: pointer;
         }
@@ -202,8 +210,8 @@
         .tooltip .tooltip-text {
             visibility: hidden;
             width: 120px;
-            background-color: #3498db;
-            color: white;
+            background-color: #3388c1;
+            color: #ffffff;
             text-align: center;
             border-radius: 6px;
             padding: 5px 0;
@@ -252,7 +260,7 @@
             border-radius: 8px;
             padding-bottom: 0.5%; 
             cursor: pointer; 
-            background-color: white;
+            background-color: #ffffff;
             color:#333;
             text-align:center;
         }
@@ -358,14 +366,15 @@
             });
         }
     </script>
-    <title>Choose Meal</title>
+<title>Choose Meal</title>
 </head>
 <body>
-
+    <header>
+        <h1>ChooseMeal</h1>
+    </header>
     <!-- Oberer Teil: Essensgerichte -->
     <div class="oberer-teil">
         <!-- Karte 1 -->
-        <h1>ChooseMeal</h1>
         <div class="karte" data-meal-id="meal1">
             <img src="https://i.pinimg.com/originals/80/8c/ce/808cce324f396472b7de6809dbb3aa51.jpg" alt="Gericht 1"> 
             <div class="karte-beschreibung">
@@ -376,6 +385,7 @@
                 
                 <div class="meal-info" id="meal1" style="display: none;">
                     <!-- Display the nutrition info section --> 
+                    <label>Nutrition</label>
                     <ul>
                         <li><strong>Calories:</strong> 400 kcal</li>
                         <li><strong>Protein:</strong> 30g</li>
@@ -397,6 +407,7 @@
                 <p style="display: inline-block;">B</p>
                 
                 <div class="meal-info" id="meal2" style="display: none;">
+                    <label>Nutrition</label>
                     <ul>
                         <li><strong>Calories:</strong> 200 kcal</li>
                         <li><strong>Protein:</strong> 20g</li>
@@ -418,6 +429,7 @@
                 <p style="display: inline-block;">C</p>
                 
                 <div class="meal-info" id="meal3" style="display: none;">
+                    <label>Nutrition</label>
                     <ul>
                         <li><strong>Calories:</strong> 100 kcal</li>
                         <li><strong>Protein:</strong> 15g</li>
@@ -439,6 +451,7 @@
                 <p style="display: inline-block;">D</p>
                 
                 <div class="meal-info" id="meal4" style="display: none;">
+                    <label>Nutrition</label>
                     <ul>
                         <li><strong>Calories:</strong> 300 kcal</li>
                         <li><strong>Protein:</strong> 25g</li>
@@ -460,6 +473,7 @@
                 <p style="display: inline-block;">A</p>
                 
                 <div class="meal-info" id="meal5" style="display: none;">
+                    <label>Nutrition</label>
                     <ul>
                         <li><strong>Calories:</strong> 200 kcal</li>
                         <li><strong>Protein:</strong> 20g</li>
@@ -481,6 +495,7 @@
                 <p style="display: inline-block;">D</p>
                 
                 <div class="meal-info" id="meal6" style="display: none;">
+                    <label>Nutrition</label>
                     <ul>
                         <li><strong>Calories:</strong> 300 kcal</li>
                         <li><strong>Protein:</strong> 19g</li>
