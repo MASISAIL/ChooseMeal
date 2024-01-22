@@ -56,6 +56,31 @@
         .karte-beschreibung {
             padding: 15px;
             text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Tooltip text */
+        .karte-beschreibung .tooltip-textback {
+            visibility: hidden;
+            width: 300px;
+            background-color: #ffffff;
+            color: red;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+            bottom: 130px;
+            left: 50%;
+            margin-left: -150px;
+            margin-bottom:-15px;
+        }
+
+        .karte-beschreibung:hover .tooltip-textback {
+            visibility: visible;
         }
 
         /* Stil für den unteren Teil */
@@ -271,28 +296,43 @@
         /* Tooltip container 2*/
         .tooltipback {
             position: relative;
-             display: inline-block;
+            display: inline-block;
             border-bottom: 1px dotted black;
         }
 
         /* Tooltip text */
         .tooltipback .tooltip-textback {
             visibility: hidden;
-            width: 120px;
-            background-color: #85212143;
-            color: #fff;
+            width: 80px;
+            background-color: #ffffff;
+            color: red;
             text-align: center;
             border-radius: 6px;
             padding: 5px 0;
 
-             /* Position the tooltip */
+            /* Position the tooltip */
             position: absolute;
             z-index: 1;
+            top: -9px;
+            left: 110%;
         }
 
         /* Show the tooltip text on hover */
+        .tooltipback .tooltip-textback::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 100%;
+            margin-top: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent rgb(255, 255, 255) transparent transparent;
+        }
+
         .tooltipback:hover .tooltip-textback {
             visibility: visible;
+            opacity: 1;
+            margin-left: -0.5px;
         }
 
         /* Your existing touch icon styling */
@@ -318,6 +358,22 @@
 
         .fish_icon {
             background: url('fish_icon.png');
+            background-size: 100%;
+            height: 32px;
+            width: 32px;
+            display: inline-block;
+        }
+
+        .chicken {
+            background: url('chicken.jpg');
+            background-size: 100%;
+            height: 32px;
+            width: 32px;
+            display: inline-block;
+        }
+
+        .rind {
+            background: url('rindfleisch.png');
             background-size: 100%;
             height: 32px;
             width: 32px;
@@ -497,6 +553,7 @@
         <div class="karte" data-meal-id="meal1">
             <img src="https://i.pinimg.com/originals/80/8c/ce/808cce324f396472b7de6809dbb3aa51.jpg" alt="Gericht 1"> 
             <div class="karte-beschreibung">
+                <span class="tooltip-textback">Klicken, um Nährwerte zu sehen</span>
                 <h3>Schnitzel mit Pommes</h3>
                 <span style="display: inline-block;" class="chicken"></span>
                 <p style="display: inline-block; ">3,49€ </p>
@@ -521,7 +578,9 @@
         <div class="karte" data-meal-id="meal2">
             <img src="https://media02.stockfood.com/largepreviews/MzQ4ODUzNDQ3/11253337-Wiener-Burger-Cheeseburger-mit-Pommes-Frittes.jpg" alt="Gericht 2">
             <div class="karte-beschreibung">
+                <span class="tooltip-textback">Klicken, um Nährwerte zu sehen</span>
                 <h3>Burger mit Pommes</h3>
+                <span style="display: inline-block;" class="chicken"></span>
                 <p style="display: inline-block; ">4,49€ </p>
                 <span style="display: inline-block;" class="staircase"></span>
                 <p style="display: inline-block;">B</p>
@@ -543,6 +602,7 @@
         <div class="karte" data-meal-id="meal3">
             <img src="https://ais.kochbar.de/kbrezept/496697_808817/1200x1200/fisch-kabeljau-gebraten-rezept.jpg" alt="Gericht 3">
             <div class="karte-beschreibung">
+                <span class="tooltip-textback">Klicken, um Nährwerte zu sehen</span>
                 <h3>Fisch mit Pommes</h3>
                 <span style="display: inline-block;" class="fish_icon"></span>
                 <p style="display: inline-block; ">4,99€ </p>
@@ -566,6 +626,7 @@
         <div class="karte" data-meal-id="meal4">
             <img src="https://bing.com/th?id=OSK.115622f95cb6d436c98bcb8568d3cfc8" alt="Gericht 4">
             <div class="karte-beschreibung">
+                <span class="tooltip-textback">Klicken, um Nährwerte zu sehen</span>
                 <h3>Veganes Curry mit Reis</h3>
                 <span style="display: inline-block;" class="vegan_icon"></span>
                 <p style="display: inline-block; ">2,99€ </p>
@@ -589,6 +650,7 @@
         <div class="karte" data-meal-id="meal5">
             <img src="https://bing.com/th?id=OSK.84e889719385066f049dadaea61fead6" alt="Gericht 5">
             <div class="karte-beschreibung">
+                <span class="tooltip-textback">Klicken, um Nährwerte zu sehen</span>
                 <h3>Spagetthi Bolognese</h3>
                 <p style="display: inline-block; ">2,99€ </p>
                 <span style="display: inline-block;" class="staircase"></span>
@@ -611,7 +673,9 @@
         <div class="karte" data-meal-id="meal6">
             <img src="https://images.liebenswert-magazin.de/gulasch-rezept,id=16b12503,b=liebenswert,w=1600,ca=0.00,0.00,100.00,100.00,rm=sk.jpeg" alt="Gericht 6">
             <div class="karte-beschreibung">
+                <span class="tooltip-textback">Klicken, um Nährwerte zu sehen</span>
                 <h3>Gulasch mit Kartoffeln</h3>
+                <span style="display: inline-block;" class="rind"></span>
                 <p style="display: inline-block; ">5,49€ </p>
                 <span style="display: inline-block;" class="staircase"></span>
                 <p style="display: inline-block;">D</p>
@@ -628,8 +692,6 @@
                 </div>
             </div>
         </div>
-        <!-- Nutrition information section -->
-        <div class="nutrition-info" style="width: 40%; display: none;"></div>
     </div>
 
     <!-- Unterer Teil: Touchzeichen -->
@@ -641,7 +703,7 @@
         <div id="page-top" class="topBar">
             <div class="tooltipback">
                 <span class= "backIcon" onclick="goBack()">&#8592;</span>
-                <span class="tooltip-textback">Klicken, um zurückzugehen.</span>
+                <span class="tooltip-textback">Zurück zur Auswahl</span>
             </div>
             <h1>ChooseMeal</h1>
             <div class="select-day">
