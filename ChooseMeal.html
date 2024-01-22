@@ -102,7 +102,27 @@
             margin: 10px;
             z-index: 1;
         }
+
+        .select-language{
+            margin: 10px;
+            z-index: 1;
+        }
+
         .select-day .select-button {
+            display: flex;
+            height: 35px;
+            background: #ffffff;
+            padding: 5px;
+            font-size: 16px;
+            font-weight: 300;
+            border-radius: 8px;
+            align-items: center;
+            cursor:pointer; 
+            justify-content: space-between;
+            box-shadow: 0 0 5px rgba(0,0,0, 0.1);
+        }
+
+        .select-language .select-button {
             display: flex;
             height: 35px;
             background: #ffffff;
@@ -354,9 +374,13 @@
             const untererTeil = document.querySelector(".unterer-teil");
             var topBar = document.querySelector(".topBar");
             const dayMenu = document.querySelector(".select-day");
+            const selectLanguage = document.querySelector(".select-language");
             var selectButton = dayMenu.querySelector(".select-button");
+            var selectLanguageButton = selectLanguage.querySelector(".select-button");
             var options = dayMenu.querySelectorAll(".option");
             var selBtnText = dayMenu.querySelector(".selBtnText");
+            var optionsLanguage = selectLanguage.querySelectorAll(".option");
+            var selBtnTextLanguage = selectLanguage.querySelector(".selBtnText");
 
             var touchIcon = document.querySelector(".touchIcon");
             //top-Bar
@@ -372,6 +396,16 @@
                     dayMenu.classList.remove("active");
                 });
             });
+                selectLanguageButton.addEventListener("click", ()=>{
+                    let selectedOption = selBtnTextLanguage.innerText;
+                    //console.log(selectedOption);
+                    if (selectedOption === "DE") {
+                        selBtnTextLanguage.innerText = "EN";
+                    }else{
+                        selBtnTextLanguage.innerText = "DE";
+                    }
+                    //console.log(selBtnText.innerText);
+                });
             // deactivate touch, can only be triggert once
             document.getElementById('touchElement').onclick = null;
             touchIcon.style.display = "none";
@@ -637,20 +671,12 @@
                 </ul>
             </div>
             <div class="topBar-rightSide">
-                <div class="select-day">
+                <div class="select-language">
                     <div class="select-button">
                         <span class="selBtnText"> DE</span>
                         <span class="flag-icon flag-icon-ad flag-icon-squared"></span>
                         <span class="downArrow">&#8595;</span>
                     </div>
-                    <ul class="options">
-                        <li class="option">
-                            <span class="option-text">Deutsch</span>
-                        </li>
-                        <li class="option">
-                            <span class="option-text">Englisch</span>
-                        </li>
-                    </ul>
                 </div>
                 <button class="btn-login" onclick="showLoginForm()">login</button>                
             </div>
